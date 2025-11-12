@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Dresses",
+    "slug": "dresses",
+    "img": "/assets/images/category-youth-C4gUNjqm.jpg"
+  },
+  {
+    "name": "Complete Sets",
+    "img": "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg"
+  },
+  {
+    "name": "Summer Collection",
+    "slug": "summer-collection",
+    "img": "/assets/images/category-youth-C4gUNjqm.jpg"
+  },
+  {
+    "name": "Casual Wear",
+    "slug": "casual-wear",
+    "img": "/assets/images/category-women-CwbBwS-K.jpg"
+  },
+  {
+    "name": "Party & Night Out",
+    "slug": "party-night-out",
+    "img": "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg"
+  },
+  {
+    "name": "Office & Formal",
+    "slug": "office-formal",
+    "img": "/assets/images/category-youth-C4gUNjqm.jpg"
+  }
+]

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -90,7 +91,7 @@ const Header = () => {
                   {categories.map((cat) => (
                     <Link
                       key={cat}
-                      href={`/collection/${cat.toLowerCase().replace(/\s+/g, "-")}`}
+                      href={`/collection`}
                       className="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition"
                       onClick={() => setIsOpen(false)}
                     >
@@ -126,9 +127,11 @@ const Header = () => {
           </Link>
 
           {/* Sign In */}
-          <button className="py-1 px-4 border-2 border-purple-700 text-[#040605] rounded-md hover:bg-purple-700 hover:text-white transition duration-300">
-            Sign In
-          </button>
+          <Link href="/register">
+            <button className="py-1 px-4 border-2 border-purple-700 text-[#040605] rounded-md hover:bg-purple-700 hover:text-white transition duration-300">
+              Sign In
+            </button>
+          </Link>
 
           {/* Cart */}
           <div
@@ -173,7 +176,7 @@ const Header = () => {
             {categories.map((cat) => (
               <Link
                 key={cat}
-                href={`/collection/${cat.toLowerCase().replace(/\s+/g, "-")}`}
+                href={`/collection`}
                 className="text-gray-700 hover:text-purple-700 py-1"
                 onClick={() => setMenuOpen(false)}
               >
@@ -184,9 +187,11 @@ const Header = () => {
 
           {/* Sign In + Cart */}
           <div className="flex items-center justify-between border-t border-gray-300 pt-3">
-            <button className="py-2 px-4 border-2 border-purple-700 text-[#040605] rounded-md hover:bg-purple-700 hover:text-white transition duration-300">
+            <Link href="/register">
+            <button className="py-1 px-4 border-2 border-purple-700 text-[#040605] rounded-md hover:bg-purple-700 hover:text-white transition duration-300">
               Sign In
             </button>
+          </Link>
             <div role="button" aria-label="Shopping cart" className="relative">
               <Image
                 alt="shopping cart"

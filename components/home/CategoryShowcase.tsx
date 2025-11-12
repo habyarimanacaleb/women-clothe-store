@@ -1,28 +1,66 @@
-// components/CategoryShowcase.tsx
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React, { Suspense } from "react";
+import { useCategories } from "@/lib/hooks/useCategory";
 
-const categories = [
-  { name: "Dresses", img: "/assets/images/category-youth-C4gUNjqm.jpg" },
-  {
-    name: "Complete Sets",
-    img: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
-  },
-  {
-    name: "Summer Collection",
-    img: "/assets/images/category-youth-C4gUNjqm.jpg",
-  },
-  { name: "Casual Wear", img: "/assets/images/category-women-CwbBwS-K.jpg" },
-  {
-    name: "Party & Night Out",
-    img: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
-  },
-  {
-    name: "Office & Formal",
-    img: "/assets/images/category-youth-C4gUNjqm.jpg",
-  },
+const categoryImage = [
+  { img: "/assets/images/category-youth-C4gUNjqm.jpg" },
+  { img: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg" },
+  { img: "/assets/images/category-youth-C4gUNjqm.jpg" },
+  { img: "/assets/images/category-women-CwbBwS-K.jpg" },
+  { img: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg" },
+  { img: "/assets/images/category-youth-C4gUNjqm.jpg" },
 ];
+
+function CategoriesGrid() {
+  const navigate = useRouter();
+  const { categories, error, loading } = useCategories();
+
+  if (error) return <p className="text-red-500 text-center">{error}</p>;
+  if (loading) return <CategorySkeleton />;
+
+  const handleClick = (categoryName: string) => {
+    // Navigate to collection page with category query
+    navigate.push(`/collection?category=${encodeURIComponent(categoryName)}`);
+  };
+
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+      {categories.map((cat, i) => (
+        <div
+          key={i}
+          onClick={() => handleClick(cat.name)}
+          className="group cursor-pointer rounded-2xl bg-white shadow hover:border border-purple-400 transition-border duration-300 p-3"
+        >
+          <div className="relative w-full h-40 overflow-hidden rounded-xl">
+            <Image
+              height={300}
+              width={300}
+              src={categoryImage[i % categoryImage.length].img}
+              alt={cat.name}
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <p className="mt-3 text-sm font-medium text-gray-700 group-hover:text-purple-700">
+            {cat.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CategorySkeleton() {
+  return (
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className="animate-pulse rounded-2xl bg-gray-200 h-52"></div>
+      ))}
+    </div>
+  );
+}
 
 export default function CategoryShowcase() {
   return (
@@ -31,26 +69,9 @@ export default function CategoryShowcase() {
         <h2 className="text-2xl font-semibold mb-8 text-gray-800">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-          {categories.map((cat) => (
-            <div
-              key={cat.name}
-              className="group cursor-pointer rounded-2xl bg-white shadow hover:shadow-lg transition p-3"
-            >
-              <div className="relative w-full h-40 overflow-hidden rounded-xl">
-                <Image
-                  src={cat.img}
-                  alt={cat.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition duration-300"
-                />
-              </div>
-              <p className="mt-3 text-sm font-medium text-gray-700 group-hover:text-purple-700">
-                {cat.name}
-              </p>
-            </div>
-          ))}
-        </div>
+        <Suspense fallback={<CategorySkeleton />}>
+          <CategoriesGrid />
+        </Suspense>
       </div>
     </section>
   );

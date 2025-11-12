@@ -1,14 +1,6 @@
-import React from "react";
-import Hero from "@/components/home/Hero";
-import CategorySection from "@/components/home/CategorySection";
-import Footer from "@/components/layout/Footer";
-import CategoryShowcase from "@/components/home/CategoryShowcase";
-import UserFlow from "@/components/home/UserFlow";
-
-const Home: React.FC = () => {
-  const collegeProducts = [
+  export const collegeProducts = [
     {
-      id: "c1",
+      sku: "c1",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "12,000",
       label: "Dress",
@@ -20,7 +12,7 @@ const Home: React.FC = () => {
       ],
     },
     {
-      id: "c2",
+      sku: "c2",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "22,000",
       label: "Casual Outfit",
@@ -29,7 +21,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c3",
+      sku: "c3",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "19,000",
       label: "Summer Dress",
@@ -38,7 +30,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c4",
+      sku: "c4",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "25,000",
       label: "Chic Top",
@@ -47,7 +39,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c1",
+      sku: "c1",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "12,000",
       label: "Dress",
@@ -56,7 +48,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c2",
+      sku: "c2",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "22,000",
       label: "Casual Outfit",
@@ -65,7 +57,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c3",
+      sku: "c3",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "19,000",
       label: "Summer Dress",
@@ -74,7 +66,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "c4",
+      sku: "c4",
       image: "/assets/images/category-youth-C4gUNjqm.jpg",
       price: "25,000",
       label: "Chic Top",
@@ -84,9 +76,9 @@ const Home: React.FC = () => {
     },
   ];
 
-  const workingWomen = [
+  export const workingWomen = [
     {
-      id: "w1",
+      sku: "w1",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "45,000",
       label: "Formal Suit",
@@ -95,7 +87,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w2",
+      sku: "w2",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "22,000",
       label: "Office Wear",
@@ -104,7 +96,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w3",
+      sku: "w3",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "32,000",
       label: "Blouse Set",
@@ -113,7 +105,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w4",
+      sku: "w4",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "40,000",
       label: "Work Dress",
@@ -122,7 +114,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w1",
+      sku: "w1",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "45,000",
       label: "Formal Suit",
@@ -131,7 +123,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w2",
+      sku: "w2",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "22,000",
       label: "Office Wear",
@@ -140,7 +132,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w3",
+      sku: "w3",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "32,000",
       label: "Blouse Set",
@@ -149,7 +141,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "w4",
+      sku: "w4",
       image: "/assets/images/bernd-dittrich-HvLvBLfHdgs-unsplash.jpg",
       price: "40,000",
       label: "Work Dress",
@@ -159,9 +151,9 @@ const Home: React.FC = () => {
     },
   ];
 
-  const matureWomen = [
+  export const matureWomen = [
     {
-      id: "m1",
+      sku: "m1",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "17,000",
       label: "Elegant Dress",
@@ -170,7 +162,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m2",
+      sku: "m2",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "15,000",
       label: "Cultural Dress",
@@ -179,7 +171,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m3",
+      sku: "m3",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "32,000",
       label: "Traditional Set",
@@ -188,7 +180,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m4",
+      sku: "m4",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "28,000",
       label: "African Print",
@@ -197,7 +189,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m1",
+      sku: "m1",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "17,000",
       label: "Elegant Dress",
@@ -206,7 +198,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m2",
+      sku: "m2",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "15,000",
       label: "Cultural Dress",
@@ -215,7 +207,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m3",
+      sku: "m3",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "32,000",
       label: "Traditional Set",
@@ -224,7 +216,7 @@ const Home: React.FC = () => {
       reviews: [],
     },
     {
-      id: "m4",
+      sku: "m4",
       image: "/assets/images/category-women-CwbBwS-K.jpg",
       price: "28,000",
       label: "African Print",
@@ -233,23 +225,9 @@ const Home: React.FC = () => {
       reviews: [],
     },
   ];
-
-  return (
-    <>
-      <main>
-        <Hero />
-        <CategorySection
-          title="College & Early Career"
-          products={collegeProducts}
-        />
-        <CategorySection title="Working Women & Moms" products={workingWomen} />
-        <CategorySection title="Mature Women" products={matureWomen} />
-        <CategoryShowcase />
-        <UserFlow />
-      </main>
-      <Footer />
-    </>
-  );
-};
-
-export default Home;
+  
+  export const allProducts = [
+    ...collegeProducts,
+    ...workingWomen,
+    ...matureWomen,
+  ];
