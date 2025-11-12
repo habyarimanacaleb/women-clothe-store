@@ -1,32 +1,27 @@
-// @ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Products";
 import { isValidObjectId } from "mongoose";
 
-interface Params {
-  params: { id: string };
-}
-
-// GET product by SKU (or _id if needed)
-export async function GET(req: NextRequest, { params }: Params) {
+// ✅ Updated syntax for Next.js 16 route handlers
+export async function GET(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = params;
+  const { id } = await context.params;
 
-  // You can choose to find by SKU or _id
-  const product = await Product.findOne({ sku: id }) || 
-                  (isValidObjectId(id) && await Product.findById(id));
-  
+  const product =
+    (await Product.findOne({ sku: id })) ||
+    (isValidObjectId(id) && (await Product.findById(id)));
+
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
+
   return NextResponse.json(product);
 }
 
-// UPDATE product by MongoDB _id
-export async function PUT(req: NextRequest, { params }: Params) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = params;
+  const { id } = await context.params;
   const data = await req.json();
 
   if (!isValidObjectId(id)) {
@@ -37,13 +32,13 @@ export async function PUT(req: NextRequest, { params }: Params) {
   if (!updated) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
+
   return NextResponse.json(updated);
 }
 
-// DELETE product by MongoDB _id
-export async function DELETE(req: NextRequest, { params }: Params) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   await connectDB();
-  const { id } = params;
+  const { id } = await context.params;
 
   if (!isValidObjectId(id)) {
     return NextResponse.json({ error: "Invalid product ID" }, { status: 400 });
@@ -53,5 +48,6 @@ export async function DELETE(req: NextRequest, { params }: Params) {
   if (!deleted) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
+
   return NextResponse.json({ message: "Deleted successfully" });
 }
